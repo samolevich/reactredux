@@ -4,11 +4,11 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { ADD, SUB } from './App';
+import { ADD, SUB, SUB_RANDOM, ADD_RANDOM } from './App';
 
-const initialState = { counter: 110 };
+const initialState = { counter: 0 };
 
-const reducer = (state = initialState, { type }) => {
+const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
 
   case ADD:
@@ -16,6 +16,12 @@ const reducer = (state = initialState, { type }) => {
 
   case SUB:
     return {counter: state.counter - 1}
+
+  case ADD_RANDOM:
+    return {counter: state.counter + payload}
+
+  case SUB_RANDOM:
+    return {counter: state.counter - payload}
 
   default:
     return state
