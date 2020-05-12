@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export class App extends Component {
+
+class App extends Component {
   render() {
-    return <div></div>;
+    return <div>{this.props.counter}</div>;
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    counter: state.counter
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
